@@ -61,7 +61,7 @@ func ParseAndRunCommand() error {
 	}
 	if showElapse {
 		te := time.Now().UnixNano()
-		fmt.Printf("\n%.6f(s) elapsed\n", float64(te-ts)/1e9)
+		fmt.Fprintf(os.Stderr, "\n%.6f(s) elapsed\n", float64(te-ts)/1e9)
 		return nil
 	}
 	return nil
@@ -81,7 +81,7 @@ func clearEnv() {
 func RunCommand(args []string, options OptionMapType) (bool, error) {
 	if len(args) == 0 {
 		if val, _ := GetBool(OptionVersion, options); val {
-			fmt.Printf("ossutil version: %s\n", Version)
+			fmt.Fprintf(os.Stderr, "ossutil version: %s\n", Version)
 			return false, nil
 		}
 		args = append(args, "help")

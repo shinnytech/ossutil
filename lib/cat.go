@@ -183,7 +183,6 @@ func (catc *CatCommand) RunCommand() error {
 
 	defer body.Close()
 	io.Copy(os.Stdout, body)
-	fmt.Printf("\n")
 
 	return err
 }
